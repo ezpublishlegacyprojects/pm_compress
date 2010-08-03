@@ -25,7 +25,8 @@
 // ## END COPYRIGHT, LICENSE AND WARRANTY NOTICE ##
 //
 
-require 'autoload.php';
+require_once 'autoload.php';
+require_once 'extension/pm_compress/classes/pmcompress.php';
 
 $cli = eZCLI::instance();
 $script = eZScript::instance( array( 'description' => ( "Compressing (Minyfying) files (.js, .css) in directories." ),
