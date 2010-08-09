@@ -64,7 +64,8 @@ class PmCompress
 						{
 							$content = file_get_contents( $filePath, 'w' );
 							// Remove spaces, tabs and new lines
-							$content = str_replace( "\n", "", $content );
+                            // TO OPTIMIZE
+							/// $content = str_replace( "\n", "", $content );
 							$content = str_replace( "\t", " ", $content );
 							$content = str_replace( '  ', ' ', $content );
 														
