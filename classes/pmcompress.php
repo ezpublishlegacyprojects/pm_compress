@@ -83,8 +83,8 @@ class PmCompress
 								// TO DO
 								// Remove spaces and tabs
 								///$content = str_replace( "\n", "", $content );
-								$content = str_replace( "\t", " ", $content );
-								$content = str_replace( '  ', ' ', $content );
+								///$content = str_replace( "\t", " ", $content );
+								///$content = str_replace( '  ', ' ', $content );
 							}
 														
 							$fp = fopen( $filePath, 'w' );
