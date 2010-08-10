@@ -63,11 +63,29 @@ class PmCompress
 						if ( in_array( $fExt, $extensions ) )
 						{
 							$content = file_get_contents( $filePath, 'w' );
-							// Remove spaces, tabs and new lines
-                            // TO OPTIMIZE
-							/// $content = str_replace( "\n", "", $content );
-							$content = str_replace( "\t", " ", $content );
-							$content = str_replace( '  ', ' ', $content );
+							
+							// css case
+							if ( $fExt == 'css' )
+							{
+								// comments
+								$content = preg_replace( '!//[^\n\r]+!', '', $content );
+								// new lines, multiple spaces/tabs/newlines
+								$content = preg_replace( '/[\r\n\t\s]+/s', ' ', $content );
+								// comments
+								$content = preg_replace( '#/\*.*?\*/#', '', $content );
+								// spaces before and after marks
+								$content = preg_replace( '/[\s]*([\{\},;:])[\s]*/', '\1', $content );
+								// spaces on the beginning
+								$content = preg_replace( '/^\s+/', '', $content );
+							}
+							else
+							{
+								// TO DO
+								// Remove spaces and tabs
+								///$content = str_replace( "\n", "", $content );
+								$content = str_replace( "\t", " ", $content );
+								$content = str_replace( '  ', ' ', $content );
+							}
 														
 							$fp = fopen( $filePath, 'w' );
 							if ( fwrite( $fp, $content ) )
